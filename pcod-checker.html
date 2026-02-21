@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PCOD Checker – HER</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <span class="brand-icon">🌸</span>
+      <span class="brand-name">HER</span>
+    </a>
+    <div class="nav-links">
+      <a href="chat.html" class="btn btn-outline">← Back to Chat</a>
+    </div>
+  </nav>
+
+  <div class="checker-page">
+    <div class="checker-card">
+
+      <!-- Header -->
+      <h1>🔮 PCOD Symptom Checker</h1>
+      <p class="checker-desc">
+        Select any symptoms you've been experiencing. HER will assess your risk level and offer
+        gentle, personalized guidance. <strong>This is not a diagnosis.</strong>
+      </p>
+
+      <!-- ===== SYMPTOM CHECKLIST ===== -->
+      <div class="symptom-check" id="symptomList">
+
+        <!-- Each symptom item is clickable -->
+        <div class="symptom-item" onclick="toggleSymptom(this, 'irregular-periods')">
+          <input type="checkbox" value="irregular-periods"/>
+          <span class="symptom-icon">🗓️</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Irregular Periods</div>
+            <div style="font-size: 0.82rem; color: var(--text-light);">Cycles longer than 35 days or fewer than 8 per year</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+        <div class="symptom-item" onclick="toggleSymptom(this, 'weight-gain')">
+          <input type="checkbox" value="weight-gain"/>
+          <span class="symptom-icon">⚖️</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Unexplained Weight Gain</div>
+            <div style="font-size: 0.82rem; color: var(--text-light);">Gaining weight despite normal diet & activity</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+        <div class="symptom-item" onclick="toggleSymptom(this, 'acne')">
+          <input type="checkbox" value="acne"/>
+          <span class="symptom-icon">🫦</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Acne or Oily Skin</div>
+            <div style="font-size: 0.82rem; color: var(--text-light);">Persistent acne on face, chest, or upper back</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+        <div class="symptom-item" onclick="toggleSymptom(this, 'hair-fall')">
+          <input type="checkbox" value="hair-fall"/>
+          <span class="symptom-icon">💆</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Hair Thinning / Hair Fall</div>
+            <div style="font-size: 0.82rem; color: var(--text-light);">Scalp hair thinning or male-pattern baldness</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+        <div class="symptom-item" onclick="toggleSymptom(this, 'facial-hair')">
+          <input type="checkbox" value="facial-hair"/>
+          <span class="symptom-icon">🧔‍♀️</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Excess Facial/Body Hair</div>
+            <div style="font-size: 0.82rem; color: var(--text-light);">Hirsutism — unusual hair growth on face, chest, belly</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+        <div class="symptom-item" onclick="toggleSymptom(this, 'fatigue')">
+          <input type="checkbox" value="fatigue"/>
+          <span class="symptom-icon">😴</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Fatigue & Low Energy</div>
+            <div style="font-size: 0.82rem; color: var(--text-light);">Feeling tired even after adequate rest</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+        <div class="symptom-item" onclick="toggleSymptom(this, 'mood-swings')">
+          <input type="checkbox" value="mood-swings"/>
+          <span class="symptom-icon">🌊</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Mood Swings / Anxiety</div>
+            <div style="font-size: 0.82rem; color: var(--text-light);">Emotional changes, depression, or anxiety</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+      </div>
+
+      <!-- Analyze button -->
+      <button class="btn btn-primary form-btn" onclick="analyzePCOD()" style="width: 100%; justify-content: center;">
+        <i class="fas fa-search"></i> Analyze My Symptoms
+      </button>
+
+      <!-- ===== RESULT BOX ===== -->
+      <div class="result-box low" id="resultLow">
+        <h3>✅ Low Risk</h3>
+        <p>
+          You have few or no major PCOD indicators right now, love. That's wonderful! 
+          But stay mindful of your body and track any changes.
+        </p>
+        <ul>
+          <li>🥗 <strong>Diet:</strong> Eat whole foods, reduce processed sugars</li>
+          <li>🧘 <strong>Yoga:</strong> Gentle Yin yoga or Butterfly pose for 15 min daily</li>
+          <li>🏃 <strong>Exercise:</strong> 30-min walks 4x/week</li>
+          <li>💧 Drink at least 2L of water daily</li>
+          <li>🩺 Annual gynecologist check-up recommended</li>
+        </ul>
+      </div>
+
+      <div class="result-box medium" id="resultMedium">
+        <h3>⚠️ Medium Risk</h3>
+        <p>
+          You're showing some symptoms associated with PCOD, sweetheart. Please don't worry — 
+          with the right lifestyle changes, many women manage this beautifully.
+        </p>
+        <ul>
+          <li>🥗 <strong>Diet:</strong> Low-GI foods — oats, brown rice, vegetables, lean protein. Avoid sugar & dairy excess.</li>
+          <li>🧘 <strong>Yoga:</strong> Butterfly pose, Supta Baddha Konasana, Cat-Cow stretch — daily 20 mins</li>
+          <li>🏃 <strong>Exercise:</strong> 30–45 min moderate cardio, 5x/week. Strength training helps too!</li>
+          <li>😴 Prioritize 7–8 hours of sleep</li>
+          <li>🩺 <strong>Please visit a gynecologist soon</strong> for hormonal tests (LH, FSH, testosterone, insulin)</li>
+          <li>💗 Be gentle with yourself. You are doing great.</li>
+        </ul>
+      </div>
+
+      <div class="result-box high" id="resultHigh">
+        <h3>🚨 High Risk — Please See a Doctor</h3>
+        <p>
+          You are showing several signs that are commonly associated with PCOD. I want you to know 
+          this is manageable, and many women live full, healthy lives with PCOD. But please, love — 
+          see a doctor soon.
+        </p>
+        <ul>
+          <li>🩺 <strong>See a gynecologist or endocrinologist immediately</strong></li>
+          <li>🔬 Request: Pelvic ultrasound, hormonal panel, fasting insulin test</li>
+          <li>🥗 <strong>Diet:</strong> Anti-inflammatory diet — no processed foods, reduce dairy, avoid sugar completely</li>
+          <li>🧘 <strong>Yoga:</strong> Restorative yoga daily — focus on stress reduction</li>
+          <li>🏃 <strong>Exercise:</strong> 45 min daily, mix cardio + strength. Even walking helps regulate insulin.</li>
+          <li>🧘‍♀️ Stress management is KEY — try meditation, journaling</li>
+          <li>💗 You are not alone. Millions of women manage PCOD successfully. You've got this.</li>
+        </ul>
+        <div style="margin-top: 14px; padding: 12px; background: #fce4ec; border-radius: 8px; font-size: 0.82rem; color: #c62828;">
+          ⚕️ <strong>Disclaimer:</strong> This is not a medical diagnosis. Please consult a qualified doctor.
+        </div>
+      </div>
+
+      <!-- Reset button (shown after result) -->
+      <button class="btn btn-ghost" id="resetBtn" onclick="resetChecker()" style="display:none; margin-top: 16px; width:100%; justify-content: center;">
+        <i class="fas fa-redo"></i> Check Again
+      </button>
+
+    </div>
+  </div>
+
+  <script>
+    // ===== Track selected symptoms =====
+    const selectedSymptoms = new Set();
+
+    // ===== Toggle symptom selection =====
+    function toggleSymptom(element, symptomId) {
+      element.classList.toggle('checked');
+      if (selectedSymptoms.has(symptomId)) {
+        selectedSymptoms.delete(symptomId);
+      } else {
+        selectedSymptoms.add(symptomId);
+      }
+    }
+
+    // ===== Analyze PCOD risk =====
+    function analyzePCOD() {
+      const count = selectedSymptoms.size;
+
+      // Hide all result boxes first
+      document.getElementById('resultLow').style.display = 'none';
+      document.getElementById('resultMedium').style.display = 'none';
+      document.getElementById('resultHigh').style.display = 'none';
+
+      // Determine risk level based on number of symptoms
+      let resultId;
+      if (count === 0) {
+        alert('💗 Please select at least one symptom you are experiencing.');
+        return;
+      } else if (count <= 2) {
+        resultId = 'resultLow';
+      } else if (count <= 4) {
+        resultId = 'resultMedium';
+      } else {
+        resultId = 'resultHigh';
+      }
+
+      // Show appropriate result and reset button
+      document.getElementById(resultId).style.display = 'block';
+      document.getElementById('resetBtn').style.display = 'flex';
+
+      // Scroll to result
+      document.getElementById(resultId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ===== Reset the checker =====
+    function resetChecker() {
+      selectedSymptoms.clear();
+      document.querySelectorAll('.symptom-item').forEach(el => el.classList.remove('checked'));
+      document.getElementById('resultLow').style.display = 'none';
+      document.getElementById('resultMedium').style.display = 'none';
+      document.getElementById('resultHigh').style.display = 'none';
+      document.getElementById('resetBtn').style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>

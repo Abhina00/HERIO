@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Breast Health Checker – HER</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <span class="brand-icon">🌸</span>
+      <span class="brand-name">HER</span>
+    </a>
+    <div class="nav-links">
+      <a href="chat.html" class="btn btn-outline">← Back to Chat</a>
+    </div>
+  </nav>
+
+  <div class="checker-page">
+    <div class="checker-card">
+
+      <!-- Header -->
+      <h1>🎀 Breast Health Checker</h1>
+      <p class="checker-desc">
+        Your breast health matters. This gentle checker helps you stay aware of any changes
+        and know when to seek help. <strong>This is NOT a diagnosis tool.</strong>
+        Please see a doctor for proper evaluation.
+      </p>
+
+      <!-- ===== SECTION 1: Symptoms ===== -->
+      <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); margin-bottom: 16px;">
+        Step 1 — Select Any Symptoms You've Noticed
+      </h3>
+
+      <div class="symptom-check" id="symptomList">
+
+        <div class="symptom-item" onclick="toggleSymptom(this, 'lump', 3)">
+          <input type="checkbox"/>
+          <span class="symptom-icon">🔵</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Lump or Thickening</div>
+            <div style="font-size: 0.82rem; color: var(--text-light);">A new lump or hardened area in the breast or underarm</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+        <div class="symptom-item" onclick="toggleSymptom(this, 'pain', 1)">
+          <input type="checkbox"/>
+          <span class="symptom-icon">💢</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Breast Pain or Tenderness</div>
+            <div style="font-size: 0.82rem; color: var(--text-light);">Persistent pain, not related to your period cycle</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+        <div class="symptom-item" onclick="toggleSymptom(this, 'discharge', 3)">
+          <input type="checkbox"/>
+          <span class="symptom-icon">💧</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Nipple Discharge</div>
+            <div style="font-size: 0.82rem; color: var(--text-light);">Unusual discharge (clear, cloudy, or bloody) when not breastfeeding</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+        <div class="symptom-item" onclick="toggleSymptom(this, 'skin-changes', 2)">
+          <input type="checkbox"/>
+          <span class="symptom-icon">🌸</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Skin Changes</div>
+            <div style="font-size: 0.82rem; color: var(--text-light);">Redness, dimpling (like orange peel), or unusual texture</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+        <div class="symptom-item" onclick="toggleSymptom(this, 'nipple-inversion', 2)">
+          <input type="checkbox"/>
+          <span class="symptom-icon">🔄</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Nipple Inversion / Retraction</div>
+            <div style="font-size: 0.82rem; color: var(--text-light);">Nipple turning inward when it wasn't before</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+        <div class="symptom-item" onclick="toggleSymptom(this, 'size-change', 1)">
+          <input type="checkbox"/>
+          <span class="symptom-icon">📐</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Sudden Size/Shape Change</div>
+            <div style="font-size: 0.82rem; color: var(--text-light);">One breast noticeably larger or differently shaped</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+      </div>
+
+      <!-- ===== SECTION 2: Risk Factors ===== -->
+      <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); margin: 24px 0 16px;">
+        Step 2 — Any of These Apply to You?
+      </h3>
+
+      <div class="symptom-check">
+
+        <div class="symptom-item" onclick="toggleRisk(this, 2)">
+          <span class="symptom-icon">👨‍👩‍👧</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Family History of Breast Cancer</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+        <div class="symptom-item" onclick="toggleRisk(this, 1)">
+          <span class="symptom-icon">🎂</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">Age 40 or Older</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+        <div class="symptom-item" onclick="toggleRisk(this, 1)">
+          <span class="symptom-icon">🕰️</span>
+          <div style="flex: 1;">
+            <div class="symptom-label">No Mammogram in Past 2 Years</div>
+          </div>
+          <div class="symptom-check-mark">✓</div>
+        </div>
+
+      </div>
+
+      <!-- Analyze button -->
+      <button class="btn btn-primary form-btn" onclick="analyzeBreast()" style="width: 100%; justify-content: center; margin-top: 8px;">
+        <i class="fas fa-heart"></i> Check My Breast Health
+      </button>
+
+      <!-- ===== RESULT: LOW ===== -->
+      <div class="result-box low" id="breastLow">
+        <h3>💚 Low Concern</h3>
+        <p>
+          You haven't reported any alarming symptoms right now — that's reassuring, love! 
+          But please continue to do monthly self-exams and schedule regular check-ups.
+        </p>
+        <ul>
+          <li>🔍 Do a self-breast exam every month (7–10 days after your period)</li>
+          <li>🩺 Annual clinical breast exam at your doctor's office</li>
+          <li>🥗 Maintain a healthy diet rich in antioxidants</li>
+          <li>🏃 Regular exercise reduces breast cancer risk</li>
+          <li>🚭 Avoid smoking and limit alcohol</li>
+        </ul>
+      </div>
+
+      <!-- ===== RESULT: MEDIUM ===== -->
+      <div class="result-box medium" id="breastMedium">
+        <h3>🟡 Some Symptoms Noted — Please Monitor Closely</h3>
+        <p>
+          You've mentioned a few things worth paying attention to, darling. 
+          It may be completely harmless, but it's always better to be safe.
+        </p>
+        <ul>
+          <li>🩺 <strong>Schedule a doctor's appointment within 2–4 weeks</strong></li>
+          <li>📷 Your doctor may recommend an ultrasound or mammogram</li>
+          <li>🔍 Continue monthly self-exams — notice any changes</li>
+          <li>📓 Keep a note of when symptoms started and any changes</li>
+          <li>💗 Try not to worry — most breast changes are benign. Stay informed.</li>
+        </ul>
+      </div>
+
+      <!-- ===== RESULT: HIGH ===== -->
+      <div class="result-box high" id="breastHigh">
+        <h3>🔴 Please See a Doctor Promptly</h3>
+        <p>
+          You've reported some symptoms that warrant immediate medical attention. 
+          I know this can feel scary, love — but catching anything early is the most powerful thing you can do.
+          Please don't delay.
+        </p>
+        <ul>
+          <li>🚨 <strong>See a doctor or gynecologist as soon as possible</strong></li>
+          <li>📋 Describe all symptoms in detail — when they started, any changes</li>
+          <li>📷 Request: Clinical breast exam, ultrasound, and/or mammogram</li>
+          <li>👩‍⚕️ Ask for a referral to a breast health specialist if needed</li>
+          <li>💗 You are brave for taking this seriously. Most cases are treatable when caught early.</li>
+          <li>🧘 Reach out to support groups — you are NOT alone in this journey.</li>
+        </ul>
+        <div style="margin-top: 14px; padding: 12px; background: #fce4ec; border-radius: 8px; font-size: 0.82rem; color: #c62828;">
+          ⚕️ <strong>Important:</strong> This is not a medical diagnosis. This tool cannot detect cancer.
+          Only a qualified medical professional can evaluate your health properly.
+        </div>
+      </div>
+
+      <!-- Reset button -->
+      <button class="btn btn-ghost" id="resetBtn" onclick="resetChecker()" style="display:none; margin-top: 16px; width:100%; justify-content: center;">
+        <i class="fas fa-redo"></i> Start Over
+      </button>
+
+    </div>
+  </div>
+
+  <script>
+    // ===== Track symptom score =====
+    let symptomScore = 0;
+    let riskScore = 0;
+    const symptomItems = new Map(); // symptom id → score
+
+    // ===== Toggle symptom with weighted score =====
+    function toggleSymptom(element, symptomId, weight) {
+      element.classList.toggle('checked');
+      if (element.classList.contains('checked')) {
+        symptomScore += weight;
+        symptomItems.set(symptomId, weight);
+      } else {
+        symptomScore -= weight;
+        symptomItems.delete(symptomId);
+      }
+    }
+
+    // ===== Toggle risk factor =====
+    function toggleRisk(element, weight) {
+      element.classList.toggle('checked');
+      if (element.classList.contains('checked')) {
+        riskScore += weight;
+      } else {
+        riskScore -= weight;
+      }
+    }
+
+    // ===== Analyze breast health =====
+    function analyzeBreast() {
+      const totalScore = symptomScore + riskScore;
+
+      // Hide all results first
+      ['breastLow', 'breastMedium', 'breastHigh'].forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+
+      let resultId;
+
+      // A high-weight symptom alone (lump, discharge) should elevate risk
+      if (symptomItems.has('lump') || symptomItems.has('discharge') || totalScore >= 5) {
+        resultId = 'breastHigh';
+      } else if (totalScore >= 2) {
+        resultId = 'breastMedium';
+      } else {
+        resultId = 'breastLow';
+      }
+
+      document.getElementById(resultId).style.display = 'block';
+      document.getElementById('resetBtn').style.display = 'flex';
+      document.getElementById(resultId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ===== Reset checker =====
+    function resetChecker() {
+      symptomScore = 0;
+      riskScore = 0;
+      symptomItems.clear();
+      document.querySelectorAll('.symptom-item').forEach(el => el.classList.remove('checked'));
+      ['breastLow', 'breastMedium', 'breastHigh'].forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+      document.getElementById('resetBtn').style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>

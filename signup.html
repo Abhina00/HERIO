@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up – HER</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <span class="brand-icon">🌸</span>
+      <span class="brand-name">HER</span>
+    </a>
+    <div class="nav-links">
+      <a href="login.html" class="btn btn-outline">Login</a>
+    </div>
+  </nav>
+
+  <div class="auth-page">
+    <div class="auth-card">
+
+      <div class="brand">
+        <h1>🌺 Join HER</h1>
+        <p>Your caring AI companion awaits you, love.</p>
+      </div>
+
+      <!-- Signup Form -->
+      <form id="signupForm" onsubmit="handleSignup(event)">
+
+        <div class="form-group">
+          <label><i class="fas fa-user"></i> Your Name</label>
+          <input type="text" id="signupName" placeholder="What should HER call you?" required/>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-envelope"></i> Email</label>
+          <input type="email" id="signupEmail" placeholder="your@email.com" required/>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-birthday-cake"></i> Age</label>
+          <input type="number" id="signupAge" placeholder="Your age" min="13" max="100"/>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-lock"></i> Password</label>
+          <input type="password" id="signupPassword" placeholder="Create a password" required minlength="6"/>
+          <p class="input-hint">At least 6 characters</p>
+        </div>
+
+        <div id="signupError" class="form-error" style="display:none; color: #c62828; font-size: 0.88rem; margin-bottom: 12px; text-align:center;"></div>
+        <div id="signupSuccess" style="display:none; color: #2e7d32; font-size: 0.88rem; margin-bottom: 12px; text-align:center;"></div>
+
+        <button type="submit" class="btn btn-primary form-btn">
+          <i class="fas fa-heart"></i> Create My Account
+        </button>
+      </form>
+
+      <div class="form-switch">
+        Already have an account? <a href="login.html">Login here →</a>
+      </div>
+
+      <!-- Small disclaimer -->
+      <p style="text-align:center; font-size:0.75rem; color: var(--text-light); margin-top: 16px;">
+        ⚕️ HER is not a medical diagnosis tool. Always consult a doctor for medical advice.
+      </p>
+
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

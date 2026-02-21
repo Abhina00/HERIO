@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id": "58b6766e-8f38-48e9-91be-2ad0d6ce6f1a",
+      "name": "abc",
+      "email": "abc@gmail.com",
+      "password": "$2a$12$wdVQ4jDAk3xERlRKfTYHWudpLPmImZgtuPgTsAzb242qGrhOjMq5W",
+      "age": "21",
+      "createdAt": "2026-02-21T05:07:41.548Z",
+      "updatedAt": "2026-02-21T05:07:41.548Z"
+    }
+  ],
+  "chats": {
+    "58b6766e-8f38-48e9-91be-2ad0d6ce6f1a_normal": [
+      {
+        "role": "user",
+        "content": "Tell me about PCOD",
+        "timestamp": "2026-02-21T05:17:52.351Z"
+      },
+      {
+        "role": "assistant",
+        "content": "For PCOD and period concerns, try our PCOD Symptom Checker in the sidebar! 🔮 It gives you a personalized risk level and suggestions for diet, yoga, and exercise. Remember — PCOD is very manageable with the right lifestyle. What specific symptoms are you experiencing, love? 💗",
+        "timestamp": "2026-02-21T05:17:52.921Z"
+      },
+      {
+        "role": "user",
+        "content": "I need emotional support",
+        "timestamp": "2026-02-21T05:18:00.578Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Every question you ask shows how much you care about yourself — and that takes courage, love. 🌸 What's going on?",
+        "timestamp": "2026-02-21T05:18:01.065Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat – HER</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body style="overflow: hidden;">
+
+  <!-- ===== CHAT PAGE LAYOUT ===== -->
+  <div class="chat-page">
+
+    <!-- ===== CHAT HEADER ===== -->
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <!-- Back button -->
+        <button class="icon-btn" onclick="window.location.href='mode.html'" title="Change mode">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <!-- HER avatar -->
+        <div class="chat-avatar">🌸</div>
+        <div>
+          <h2>HER <span id="modeTag" style="font-size:0.8rem; color: var(--lavender-deep); font-family:'Lato'; font-weight:700;"></span></h2>
+          <span>Online · Always here for you</span>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="chat-header-actions">
+        <!-- Notifications bell -->
+        <button class="icon-btn" onclick="toggleNotifications()" title="Notifications" id="notifBtn">
+          <i class="fas fa-bell"></i>
+        </button>
+        <!-- Clear chat -->
+        <button class="icon-btn" onclick="clearChat()" title="Clear chat">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+        <!-- Settings/mode -->
+        <button class="icon-btn" onclick="window.location.href='mode.html'" title="Change mode">
+          <i class="fas fa-sliders-h"></i>
+        </button>
+        <!-- Logout -->
+        <button class="icon-btn" onclick="logout()" title="Logout">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== MAIN CHAT LAYOUT ===== -->
+    <div class="chat-layout">
+
+      <!-- ===== SIDEBAR ===== -->
+      <div class="chat-sidebar">
+
+        <!-- Quick Tools section -->
+        <div class="sidebar-section">
+          <h3>Quick Tools</h3>
+          <div class="quick-tool" onclick="window.location.href='pcod-checker.html'">
+            <span class="tool-icon">🔮</span> PCOD Checker
+          </div>
+          <div class="quick-tool" onclick="window.location.href='breast-checker.html'">
+            <span class="tool-icon">🎀</span> Breast Health
+          </div>
+          <div class="quick-tool" onclick="sendQuickMessage('I need emotional support')">
+            <span class="tool-icon">💝</span> Emotional Support
+          </div>
+          <div class="quick-tool" onclick="sendQuickMessage('Give me a self-love affirmation')">
+            <span class="tool-icon">🌟</span> Self-Love Boost
+          </div>
+        </div>
+
+        <!-- Chat history section -->
+        <div class="sidebar-section" style="flex: 1; overflow-y: auto;">
+          <h3>Past Conversations</h3>
+          <div id="chatHistoryList">
+            <!-- Chat sessions appear here -->
+            <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 8px;">Your chat history will appear here.</p>
+          </div>
+        </div>
+
+        <!-- Disclaimer at bottom of sidebar -->
+        <div class="sidebar-section">
+          <p style="font-size: 0.75rem; color: var(--text-light); line-height: 1.5; text-align: center;">
+            ⚕️ HER is not a medical diagnosis tool. Please consult a doctor for medical advice.
+          </p>
+        </div>
+      </div>
+
+      <!-- ===== CHAT MAIN AREA ===== -->
+      <div class="chat-main">
+
+        <!-- Messages display area -->
+        <div class="messages-area" id="messagesArea">
+          <!-- Messages are rendered here by JS -->
+        </div>
+
+        <!-- Suggested prompts (shown only at start) -->
+        <div class="suggestions-bar" id="suggestionsBar">
+          <!-- Suggestion chips populated by JS based on mode -->
+        </div>
+
+        <!-- ===== INPUT AREA ===== -->
+        <div class="chat-input-area">
+          <div class="chat-input-row">
+            <textarea
+              id="chatInput"
+              placeholder="Talk to HER... she's listening 💗"
+              rows="1"
+              onkeydown="handleKeyDown(event)"
+              oninput="autoResize(this)"
+            ></textarea>
+            <button class="send-btn" onclick="sendMessage()" title="Send">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+          <p class="chat-disclaimer">
+            ⚕️ This is not a medical diagnosis tool. Always consult a healthcare professional.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NOTIFICATION PANEL ===== -->
+  <div class="notif-panel" id="notifPanel">
+    <div class="notif-header">
+      <h3>🔔 Reminders & Notifications</h3>
+      <button class="notif-close" onclick="toggleNotifications()">✕</button>
+    </div>
+    <div class="notif-list" id="notifList">
+      <!-- Notifications rendered by JS -->
+    </div>
+  </div>
+
+  <!-- ===== API CONFIG NOTE ===== -->
+  <!-- 
+    IMPORTANT: To enable AI responses, you need to set your OpenAI API key.
+    See js/config.js — paste your key there.
+    If no key is set, HER will use built-in compassionate fallback responses.
+  -->
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/notifications.js"></script>
+</body>
+</html>

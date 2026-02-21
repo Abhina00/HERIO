@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Choose Your Mode – HER</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <span class="brand-icon">🌸</span>
+      <span class="brand-name">HER</span>
+    </a>
+    <div class="nav-links">
+      <!-- Show user name from localStorage -->
+      <span id="userGreeting" style="color: var(--text-mid); font-weight: 600;"></span>
+      <button onclick="logout()" class="btn btn-outline" style="font-size:0.85rem; padding: 8px 18px;">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== MODE SELECTION ===== -->
+  <div class="mode-page">
+    <div class="mode-container">
+
+      <!-- Welcome greeting -->
+      <p class="hero-badge" style="display:inline-block; margin-bottom: 16px;">💗 Welcome back!</p>
+      <h1>How can <em>HER</em> help you today?</h1>
+      <p>Choose the mode that best fits your current journey, love.</p>
+
+      <!-- Mode cards grid -->
+      <div class="mode-cards">
+
+        <!-- Normal Mode Card -->
+        <div class="mode-card" onclick="selectMode('normal')">
+          <span class="mode-emoji">🌸</span>
+          <h2>Normal Mode</h2>
+          <p>General women's health support — PCOD, breast health, emotional wellness, period tracking, and everything in between.</p>
+          <div class="btn btn-primary" style="width: 100%; justify-content: center;">
+            <i class="fas fa-comments"></i> Enter Normal Mode
+          </div>
+        </div>
+
+        <!-- Pregnancy Mode Card -->
+        <div class="mode-card" onclick="selectMode('pregnancy')">
+          <span class="mode-emoji">🤰</span>
+          <h2>Pregnancy Mode</h2>
+          <p>Dedicated support for your beautiful pregnancy journey — weekly updates, baby development, symptoms, and nurturing guidance.</p>
+          <div class="btn btn-primary" style="width: 100%; justify-content: center;">
+            <i class="fas fa-baby"></i> Enter Pregnancy Mode
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Other tools -->
+      <div style="margin-top: 40px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="pcod-checker.html" class="btn btn-ghost">
+          🔮 PCOD Checker
+        </a>
+        <a href="breast-checker.html" class="btn btn-ghost">
+          🎀 Breast Health Checker
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ===== Check if user is logged in =====
+    const user = JSON.parse(localStorage.getItem('herUser'));
+    if (!user) {
+      window.location.href = 'login.html'; // Redirect if not logged in
+    } else {
+      document.getElementById('userGreeting').textContent = '👋 Hi, ' + user.name + '!';
+    }
+
+    // ===== Handle mode selection =====
+    function selectMode(mode) {
+      // Save selected mode to localStorage
+      localStorage.setItem('herMode', mode);
+      // Go to chat page
+      window.location.href = 'chat.html';
+    }
+
+    // ===== Logout function =====
+    function logout() {
+      localStorage.removeItem('herUser');
+      localStorage.removeItem('herMode');
+      window.location.href = 'index.html';
+    }
+  </script>
+
+</body>
+</html>
