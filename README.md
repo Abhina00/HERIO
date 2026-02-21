@@ -89,26 +89,6 @@ Custom reminders for medication, hydration, exercise, and cycle tracking.
 <b>Feature 6: Authentication System</b>
 
 Login and signup functionality with user session management.
-
-
-<h3>Implementation</h3>
-
-<h2>For Software</h2>
-<h3>Installation</h3>
-
-git clone <https://github.com/Abhina00/HerAi2.0)>
-cd her
-
-
-<h3>Run</h3>
-
-Open index.html in your browser
-
-OR
-
-Use VS Code Live Server extension.
-
-
 <h2> Project Structure</h2>
 
 
