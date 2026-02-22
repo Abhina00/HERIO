@@ -6,9 +6,6 @@ Members:
   <li>Anjana <br> Bharata Mata College ThrikkakaraK</li>
   <li>Abhina rose shaju<br> Bharata Mata College Thrikkakara</li>
 </ul>
-
-<h2>Hosted Project Link</h2>
-  https://abhina00.github.io/HerAi2.0/
    
 <h2>Project Description</h2>
 
@@ -110,17 +107,7 @@ HER/
     ├── main.js         → Landing page interactions
     ├── chat.js         → Core AI chat logic + OpenAI integration
     └── notifications.js → Reminders & notification system
- Project Documentation Screenshots
-
-
-Chat interface showing AI conversation in Normal Mode.
-
-
-PCOD symptom assessment form with risk evaluation.
-
-
-Pregnancy mode with trimester-based recommendations.
-
+ 
  <h2>System Architecture</h2>
 <h3></h3>Architecture Overview</h3>
 <p>Frontend-Based Architecture</p>
@@ -170,8 +157,6 @@ Processes user message and returns AI response.
 <h3>📈 Future Improvements</h3>
 <ul>
 <li>Integration with real medical APIs</li>
-
-<li>Secure backend with database (Node.js + MongoDB)</li>
 
 <li>Push notifications</li>
 
